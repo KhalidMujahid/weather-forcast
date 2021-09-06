@@ -8,12 +8,13 @@ button.addEventListener("click", async (e) => {
   await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`)
       .then(res => res.json())
       .then(data => {
+      	let d = Math.floor((data.main.temp - 32) / 1.8);
       	let values = `
            <div class="weather-city">
 			<h2>Weather in ${input.value} ${data.sys.country}</h2>
 			</div>
 			<div class="weather-temp">
-			<p>${data.main.temp}<sup>o</sup>C</p>
+			<p>${d}<sup>o</sup>C</p>
 			</div>
 			<div class="weather-nature">
 			<p>Humidity: ${data.main.humidity}<sup>o</sup></p>
